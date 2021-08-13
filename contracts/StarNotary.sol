@@ -71,11 +71,11 @@ contract StarNotary is ERC721 {
         require(ownerOf(_tokenId1) == msg.sender || ownerOf(_tokenId2) == msg.sender , "You can't Exchange the Star you don't owned");
 //        require(ownerOf(_tokenId2) == msg.sender, "You can't Exchange the Star you don't owned");
         if(msg.sender==ownerOf(_tokenId1)) {
-          _transferFrom(ownerOf(_tokenId1), ownerOf(_tokenId2), _tokenId1)
-          _transferFrom(ownerOf(_tokenId2), ownerOf(_tokenId1), _tokenId2)
+          _transferFrom(ownerOf(_tokenId1), ownerOf(_tokenId2), _tokenId1);
+          _transferFrom(ownerOf(_tokenId2), ownerOf(_tokenId1), _tokenId2);
         } else {
-          _transferFrom(ownerOf(_tokenId2), ownerOf(_tokenId1), _tokenId2)
-          _transferFrom(ownerOf(_tokenId1), ownerOf(_tokenId2), _tokenId1)
+          _transferFrom(ownerOf(_tokenId2), ownerOf(_tokenId1), _tokenId2);
+          _transferFrom(ownerOf(_tokenId1), ownerOf(_tokenId2), _tokenId1);
         }
 
 //        _transferFrom(ownerOf(_tokenId1), msg.sender, _tokenId2)
@@ -88,7 +88,7 @@ contract StarNotary is ERC721 {
         //1. Check if the sender is the ownerOf(_tokenId)
         require(ownerOf(_tokenId) == msg.sender, "You can't transfer the Star you don't owned");
         //2. Use the transferFrom(from, to, tokenId); function to transfer the Star
-        _transferFrom(msg.sender , _to1 , _tokenId)
+        _transferFrom(msg.sender , _to1 , _tokenId);
     }
 
 }
