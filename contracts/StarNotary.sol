@@ -80,10 +80,6 @@ contract StarNotary is ERC721 {
           _transferFrom(owner2, owner1, _tokenId1);
           _transferFrom(owner1, owner2, _tokenId2);
         }
-
-//        _transferFrom(ownerOf(_tokenId1), msg.sender, _tokenId2)
-//        _transferFrom(ownerOf(_tokenId2), msg.sender, _tokenId2)
-
     }
 
     // Implement Task 1 Transfer Stars
