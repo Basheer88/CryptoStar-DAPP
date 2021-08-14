@@ -1,5 +1,7 @@
 //const { assert } = require("console");
 
+// const { assert } = require("console");
+
 //const { assert } = require("console");
 
 const StarNotary = artifacts.require("StarNotary");
@@ -97,9 +99,6 @@ it('lets 2 users exchange stars', async() => {
     let tokenId2 = 10;
     let instance = await StarNotary.deployed();
 
-
-
-
     await instance.createStar('First Star!', tokenId1, {from: accounts[0]});
     assert.equal(await instance.tokenIdToStarInfo.call(tokenId1), 'First Star!');
 
@@ -122,6 +121,16 @@ it('lets a user transfer a star', async() => {
     // 1. create a Star with different tokenId
     // 2. use the transferStar function implemented in the Smart Contract
     // 3. Verify the star owner changed.
+    let tokenId = 11;
+    let tran = accounts[1];
+    let instance = await StarNotary.deployed();
+    await instance.createStar('Super Star!', tokenId, {from: accounts[0]});
+    assert.equal(await instance.tokenIdToStarInfo.call(tokenId), 'Super Star!');
+
+    await instance.transferStar(tran, tokenId , {from : accounts[0]});
+
+    assert.equal(await instance.ownerOf(tokenId), tran);
+
 });
 
 it('lookUptokenIdToStarInfo test', async() => {
