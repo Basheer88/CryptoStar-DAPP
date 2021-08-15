@@ -1,39 +1,24 @@
 # ND1309 C2 Ethereum Smart Contracts, Tokens and Dapps - Project Starter 
-**PROJECT: Decentralized Star Notary Service Project** - For this project, you will create a DApp by adding functionality with your smart contract and deploy it on the public testnet.
-
-### ToDo
-This Starter Code has already implemented the functionalities you implemented in the StarNotary (Version 2) exercise, and have comments in all the files you need to implement your tasks.
-
+**PROJECT: Decentralized Star Notary Service Project** - 
+Transaction Hash
+0xd6ccd453f682f56ac0da40e6b959ee420026d68f6ccb69e7c736baa643eee538
 
 
 ### Dependencies
-For this project, you will need to have:
-1. **Node and NPM** installed - NPM is distributed with [Node.js](https://www.npmjs.com/get-npm)
-```bash
-# Check Node version
-node -v
-# Check NPM version
-npm -v
-```
-
-
-2. **Truffle v5.X.X** - A development framework for Ethereum. 
-```bash
-# Unsinstall any previous version
-npm uninstall -g truffle
-# Install
-npm install -g truffle
-# Specify a particular version
-npm install -g truffle@5.0.2
-# Verify the version
-truffle version
-```
+**This project works with**
+1. **Install all required packages**
+Truffle v5.1.6 (core: 5.1.6)
+Solidity v0.5.12 (solc-js)
+Node v8.10.0
+Web3.js v1.2.1 
+npm 5.6.0
 
 
 2. **Metamask: 5.3.1** - If you need to update Metamask just delete your Metamask extension and install it again.
 
 
-3. [Ganache](https://www.trufflesuite.com/ganache) - Make sure that your Ganache and Truffle configuration file have the same port.
+3. **Ganache** 
+Intall from here (https://www.trufflesuite.com/ganache) - Make sure that your Ganache and Truffle configuration file have the same port.
 
 
 4. **Other mandatory packages**:
@@ -48,24 +33,9 @@ npm install web3
 
 
 ### Run the application
-1. Clean the frontend 
-```bash
-cd app
-# Remove the node_modules  
-# remove packages
-rm -rf node_modules
-# clean cache
-npm cache clean
-rm package-lock.json
-# initialize npm (you can accept defaults)
-npm init
-# install all modules listed as dependencies in package.json
-npm install
-```
+1. Start Truffle by running
 
 
-2. Start Truffle by running
-```bash
 # For starting the development console
 truffle develop
 # truffle console
@@ -80,26 +50,10 @@ migrate --reset
 test
 ```
 
-3. Frontend - Once you are ready to start your frontend, run the following from the app folder:
-```bash
+2. Frontend - Once you are ready to start your frontend, run the following from the app folder:
+
 cd app
 npm run dev
-```
-
----
-
-### Important
-When you will add a new Rinkeyby Test Network in your Metamask client, you will have to provide:
-
-| Network Name | New RPC URL | Chain ID |
-|---|---|---|
-|Private Network 1|`http://127.0.0.1:9545/`|1337 |
-
-The chain ID above can be fetched by:
-```bash
-cd app
-node index.js
-```
 
 ## Troubleshoot
 #### Error 1 
@@ -128,11 +82,36 @@ compilers: {
     // ...
 ```
 
-## Raise a PR or report an Issue
-1. Feel free to raise a [Pull Request](https://github.com/udacity/nd1309-p2-Decentralized-Star-Notary-Service-Starter-Code/pulls) if you find a bug/scope of improvement in the current repository. 
+#### Error 3
+```
+Metamak transfer error : 
+```
+**Solution:** In such a case:
+```
+ reset your account data in metamask
+```
 
-2. If you have suggestions or facing issues, you can log in issue. 
+#### Error 4
+```
+test file error assert.equal error: 
+```
+**Solution:** In such a case:
+```
+ make sure your test file doenst have thie below line of code. it added automatiically and lead test file to give an error.
 
----
+const { assert } = require("console");
 
-Do not use the [Old depreacted zipped starter code](https://s3.amazonaws.com/video.udacity-data.com/topher/2019/January/5c51c4c0_project-5-starter-code/project-5-starter-code.zip)
+ if you have it just remove it and run the test again
+```
+
+#### Error 5
+```
+after running npm run dev lot of log error will be keep showing in the terminal 
+```
+**Solution:** In such a case edit truffle-config.js:
+```
+instead of 
+  provider: () => new HDWalletProvider(mnemonic, `https://rinkeby.infura.io/v3/${infuraKey}`),
+Use
+  provider: new HDWalletProvider(mnemonic, `https://rinkeby.infura.io/v3/${infuraKey}`), 
+```
