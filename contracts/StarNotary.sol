@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 pragma solidity >=0.4.24;
 
 //Importing openzeppelin-solidity ERC-721 implemented Standard
@@ -70,17 +71,15 @@ contract StarNotary is ERC721 {
         //4. Use _transferFrom function to exchange the tokens.
         require(ownerOf(_tokenId1) == msg.sender || ownerOf(_tokenId2) == msg.sender , "You can't Exchange the Star you don't owned");
 //        require(ownerOf(_tokenId2) == msg.sender, "You can't Exchange the Star you don't owned");
-        if(msg.sender==ownerOf(_tokenId1)) {
-          _transferFrom(ownerOf(_tokenId1), ownerOf(_tokenId2), _tokenId1);
-          _transferFrom(ownerOf(_tokenId2), ownerOf(_tokenId1), _tokenId2);
+        address owner1 = ownerOf(_tokenId1);
+        address owner2 = ownerOf(_tokenId2);
+        if(msg.sender==owner1) {
+          _transferFrom(owner1, owner2, _tokenId1);
+          _transferFrom(owner2, owner1, _tokenId2);
         } else {
-          _transferFrom(ownerOf(_tokenId2), ownerOf(_tokenId1), _tokenId2);
-          _transferFrom(ownerOf(_tokenId1), ownerOf(_tokenId2), _tokenId1);
+          _transferFrom(owner2, owner1, _tokenId1);
+          _transferFrom(owner1, owner2, _tokenId2);
         }
-
-//        _transferFrom(ownerOf(_tokenId1), msg.sender, _tokenId2)
-//        _transferFrom(ownerOf(_tokenId2), msg.sender, _tokenId2)
-
     }
 
     // Implement Task 1 Transfer Stars
