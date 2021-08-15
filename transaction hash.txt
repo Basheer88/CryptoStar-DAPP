@@ -1,3 +1,0 @@
-0xd6ccd453f682f56ac0da40e6b959ee420026d68f6ccb69e7c736baa643eee538
-
-provider: new HDWalletProvider(mnemonic, `https://rinkeby.infura.io/v3/${infuraKey}`),
