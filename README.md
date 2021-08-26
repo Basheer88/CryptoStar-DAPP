@@ -32,21 +32,21 @@ npm install web3
 ```
 
 
-### Run the application
+## Run the application
 1. Start Truffle by running
 
 
-# For starting the development console
+### For starting the development console
 truffle develop
-# truffle console
+### truffle console
 
-# For compiling the contract, inside the development console, run:
+### For compiling the contract, inside the development console, run:
 compile
 
-# For migrating the contract to the locally running Ethereum network, inside the development console
+### For migrating the contract to the locally running Ethereum network, inside the development console
 migrate --reset
 
-# For running unit tests the contract, inside the development console, run:
+### For running unit tests the contract, inside the development console, run:
 test
 ```
 
